@@ -1199,6 +1199,99 @@
   },
   {
     "type": "post",
+    "url": "/me/class/:classId/user",
+    "title": "add existing user in a class",
+    "name": "AddExistingUsertoClass",
+    "group": "Me_Classes",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "peopleUserId",
+            "description": "<p>user id of the person to be added.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "roleId",
+            "description": "<p>[Required] Role of the user in the class.</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n[\n     {\n         \"name\":\"Abhyudaya Admin\",\n         \"username\":\"abhyudayaadmin\",\n         \"roleName\":\"Admin\",\n         \"userId\":58\n     }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserClassController.php",
+    "groupTitle": "Me_Classes",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ],
+        "Error 422": [
+          {
+            "group": "Error422",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "UNPROCESSABLE-ENTITY",
+            "description": "<p>The <code>user</code> is present in the group/class. The repeatation of the data, breaking db constraint gives this error.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        },
+        {
+          "title": "Unprocessable-Entity-Example",
+          "content": "HTTP/1.1 422 Unprocessable Entity\n    {\n        \"error\": \"User exists in the group\"\n    }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
     "url": "/me/class/:classId/session",
     "title": "Add Session Data in Class",
     "name": "AddSessionInClass",
@@ -1312,6 +1405,13 @@
             "optional": false,
             "field": "className",
             "description": "<p>[Required] Name of the class.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "roleId",
+            "description": "<p>[Required] Role of the user in the class.</p> "
           },
           {
             "group": "Parameter",
@@ -1769,7 +1869,7 @@
   },
   {
     "type": "get",
-    "url": "/me/class/:classId/short",
+    "url": "/me/class/:classId/student",
     "title": "Short students of class",
     "name": "getStudentsOfClass",
     "group": "Me_Classes",
@@ -3071,6 +3171,25 @@
         }
       ]
     }
+  },
+  {
+    "type": "get",
+    "url": "/role/list/class",
+    "title": "Gives List of all roles in class",
+    "name": "GetAllRolesInClass",
+    "group": "Roles",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    [\n      {\n        \"id\": 9,\n        \"role_name\": \"Admin\",\n        \"role_category\": \"class\"\n      },\n      {\n        \"id\": 10,\n        \"role_name\": \"Principal\",\n        \"role_category\": \"class\"\n      },\n      {\n        \"id\": 11,\n        \"role_name\": \"Teacher\",\n        \"role_category\": \"class\"\n      },\n      {\n        \"id\": 12,\n        \"role_name\": \"Student\",\n        \"role_category\": \"class\"\n      }\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/RoleController.php",
+    "groupTitle": "Roles"
   },
   {
     "type": "get",
