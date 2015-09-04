@@ -189,6 +189,13 @@
             "optional": false,
             "field": "password_confirmation",
             "description": "<p>password for the user.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "doNotSendVerification",
+            "description": "<p>if 1 then no activation related actions are taken by the api</p> "
           }
         ]
       }
@@ -1179,25 +1186,6 @@
     "groupTitle": "Groups"
   },
   {
-    "type": "get",
-    "url": "/me/class/:classId/course/plan",
-    "title": "whole plan for a class",
-    "name": "GetClassCoursePlan",
-    "group": "Me_Class",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"courseId\": 1,\n    \"courseName\": \"School Bank Champs Junior\",\n    \"shortDescription\": \"Social and Financial Education for Children Ages 10-14\",\n    \"longDescription\": \"A Class Course for Social and Financial Education for Children\",\n    \"courseImg_url\": null,\n    \"groups\": [\n    {\n        \"courseGroupId\": 1,\n        \"courseGroupTitle\": \"Introduction to School Bank Champs\",\n        \"courseGroupStep\": 1,\n        \"courseGroupObjective\": \"<p>By the end of the lesson, the students will be able to:</p>\\n\\n<ol>\\n\\t<li>Recognize SchoolBank Champs and its Motto</li>\\n\\t<li>Be excited about becoming a School Bank Champ and applying the School Bank Champs motto.</li>\\n\\t<li>Be inspired to follow the steps to become a School Bank Champs and hence be interested in active learning of the content.</li>\\n\\t<li>&nbsp;Get introduced to the land of School Bank Champs and their friends.</li>\\n</ol>\",\n        \"categories\": [\n            {\n                \"courseGroupCategoryId\": 2,\n                \"courseGroupCategoryTitle\": \"Activities\",\n                \"resources\": [\n                    {\n                        \"resourceTitle\": \"Qualities of a Superhero\",\n                        \"resourceType\": \"text\",\n                        \"resourceId\": 1002,\n                        \"courseGroupResourceId\": 1\n                    },\n                    {\n                        \"resourceTitle\": \"Normal Children can become SchoolBank Champs \",\n                        \"resourceType\": \"link\",\n                        \"resourceId\": 2001,\n                        \"courseGroupResourceId\": 2\n                    },\n                    {\n                        \"resourceTitle\": \"Friends of SchoolBank Champs\",\n                        \"resourceType\": \"link\",\n                        \"resourceId\": 2002,\n                        \"courseGroupResourceId\": 3\n                    },\n                    {\n                        \"resourceTitle\": \"Understand Paise Bachao Sapne Sajao\",\n                        \"resourceType\": \"text\",\n                        \"resourceId\": 5001,\n                        \"courseGroupResourceId\": 4\n                    },\n                    {\n                        \"resourceTitle\": \"Opening of Students Account at www.schoolbankchamps.com\",\n                        \"resourceType\": \"upload\",\n                        \"resourceId\": 7888,\n                        \"courseGroupResourceId\": 5\n                    }\n                ]\n            },\n            {\n                \"courseGroupCategoryId\": 3,\n                \"courseGroupCategoryTitle\": \"Materials\",\n                \"resources\": [\n                    {\n                        \"resourceTitle\": \"SchoolBank Champs and their friends Story\",\n                        \"resourceType\": \"text\",\n                        \"resourceId\": 11111,\n                        \"courseGroupResourceId\": 6\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"courseGroupId\": 2,\n        \"courseGroupTitle\": \"Needs and Wants\",\n        \"courseGroupStep\": 2,\n        \"courseGroupObjective\": \"<p>By the end of the lesson, the students will be able to:</p>\\n\\n<ol>\\n\\t<li>Understand the difference between needs and wants</li>\\n\\t<li>Identify savings goals based on needs and wants&nbsp;</li>\\n</ol>\\n\",\n        \"categories\": [\n            {\n                \"courseGroupCategoryId\": 2,\n                \"courseGroupCategoryTitle\": \"Activities\",\n                \"resources\": [\n                    {\n                        \"resourceTitle\": \"Difference Between Need and Want\",\n                        \"resourceType\": \"text\",\n                        \"resourceId\": 11112,\n                        \"courseGroupResourceId\": 7\n                    },\n                    {\n                        \"resourceTitle\": \"List of Items to Save for\",\n                        \"resourceType\": \"text\",\n                        \"resourceId\": 11113,\n                        \"courseGroupResourceId\": 8\n                    },\n                    {\n                        \"resourceTitle\": \"Make a SMART plan for how they might save up to purchase the item\",\n                        \"resourceType\": \"text\",\n                        \"resourceId\": 11114,\n                        \"courseGroupResourceId\": 9\n                    }\n                ]\n            }\n        ]\n    }\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "app/Http/Controllers/UserClassController.php",
-    "groupTitle": "Me_Class"
-  },
-  {
     "type": "post",
     "url": "/me/class/:classId/user",
     "title": "add existing user in a class",
@@ -1524,6 +1512,25 @@
         }
       ]
     }
+  },
+  {
+    "type": "get",
+    "url": "/me/class/:classId/course/plan",
+    "title": "whole plan for a class",
+    "name": "GetClassCoursePlan",
+    "group": "Me_Classes",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"courseId\": 1,\n    \"courseName\": \"School Bank Champs Junior\",\n    \"shortDescription\": \"Social and Financial Education for Children Ages 10-14\",\n    \"longDescription\": \"A Class Course for Social and Financial Education for Children\",\n    \"courseImg_url\": null,\n    \"groups\": [\n    {\n        \"courseGroupId\": 1,\n        \"courseGroupTitle\": \"Introduction to School Bank Champs\",\n        \"courseGroupStep\": 1,\n        \"courseGroupObjective\": \"<p>By the end of the lesson, the students will be able to:</p>\\n\\n<ol>\\n\\t<li>Recognize SchoolBank Champs and its Motto</li>\\n\\t<li>Be excited about becoming a School Bank Champ and applying the School Bank Champs motto.</li>\\n\\t<li>Be inspired to follow the steps to become a School Bank Champs and hence be interested in active learning of the content.</li>\\n\\t<li>&nbsp;Get introduced to the land of School Bank Champs and their friends.</li>\\n</ol>\",\n        \"categories\": [\n            {\n                \"courseGroupCategoryId\": 2,\n                \"courseGroupCategoryTitle\": \"Activities\",\n                \"resources\": [\n                    {\n                        \"resourceTitle\": \"Qualities of a Superhero\",\n                        \"resourceType\": \"text\",\n                        \"resourceId\": 1002,\n                        \"courseGroupResourceId\": 1\n                    },\n                    {\n                        \"resourceTitle\": \"Normal Children can become SchoolBank Champs \",\n                        \"resourceType\": \"link\",\n                        \"resourceId\": 2001,\n                        \"courseGroupResourceId\": 2\n                    },\n                    {\n                        \"resourceTitle\": \"Friends of SchoolBank Champs\",\n                        \"resourceType\": \"link\",\n                        \"resourceId\": 2002,\n                        \"courseGroupResourceId\": 3\n                    },\n                    {\n                        \"resourceTitle\": \"Understand Paise Bachao Sapne Sajao\",\n                        \"resourceType\": \"text\",\n                        \"resourceId\": 5001,\n                        \"courseGroupResourceId\": 4\n                    },\n                    {\n                        \"resourceTitle\": \"Opening of Students Account at www.schoolbankchamps.com\",\n                        \"resourceType\": \"upload\",\n                        \"resourceId\": 7888,\n                        \"courseGroupResourceId\": 5\n                    }\n                ]\n            },\n            {\n                \"courseGroupCategoryId\": 3,\n                \"courseGroupCategoryTitle\": \"Materials\",\n                \"resources\": [\n                    {\n                        \"resourceTitle\": \"SchoolBank Champs and their friends Story\",\n                        \"resourceType\": \"text\",\n                        \"resourceId\": 11111,\n                        \"courseGroupResourceId\": 6\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"courseGroupId\": 2,\n        \"courseGroupTitle\": \"Needs and Wants\",\n        \"courseGroupStep\": 2,\n        \"courseGroupObjective\": \"<p>By the end of the lesson, the students will be able to:</p>\\n\\n<ol>\\n\\t<li>Understand the difference between needs and wants</li>\\n\\t<li>Identify savings goals based on needs and wants&nbsp;</li>\\n</ol>\\n\",\n        \"categories\": [\n            {\n                \"courseGroupCategoryId\": 2,\n                \"courseGroupCategoryTitle\": \"Activities\",\n                \"resources\": [\n                    {\n                        \"resourceTitle\": \"Difference Between Need and Want\",\n                        \"resourceType\": \"text\",\n                        \"resourceId\": 11112,\n                        \"courseGroupResourceId\": 7\n                    },\n                    {\n                        \"resourceTitle\": \"List of Items to Save for\",\n                        \"resourceType\": \"text\",\n                        \"resourceId\": 11113,\n                        \"courseGroupResourceId\": 8\n                    },\n                    {\n                        \"resourceTitle\": \"Make a SMART plan for how they might save up to purchase the item\",\n                        \"resourceType\": \"text\",\n                        \"resourceId\": 11114,\n                        \"courseGroupResourceId\": 9\n                    }\n                ]\n            }\n        ]\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserClassController.php",
+    "groupTitle": "Me_Classes"
   },
   {
     "type": "get",
