@@ -3,7 +3,7 @@ define({
   "version": "0.0.0",
   "description": "Api List for the edflock application",
   "title": "Edflock API Documentation",
-  "url": "http://localhost:8000",
+  "url": "http://api.edflock.com",
   "order": [
     "GetUser",
     "PostUser"
@@ -16,7 +16,7 @@ define({
   "apidoc": "0.2.0",
   "generator": {
     "name": "apidoc",
-    "time": "2015-09-04T10:40:20.590Z",
+    "time": "2015-09-04T10:44:35.237Z",
     "url": "http://apidocjs.com",
     "version": "0.13.1"
   }
