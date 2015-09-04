@@ -254,6 +254,83 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/challenge/:challengeId/discussion",
+    "title": "list of discussion for a challenge",
+    "name": "GetDiscussionOfChallenge",
+    "group": "Challenges",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n [\n      {\n        \"discussionId\": 3,\n        \"discussionSubject\": \"heellll\",\n        \"discussionText\": \"challenge 1\",\n        \"createdBy\": null,\n        \"createdById\": 2,\n        \"discussionCreatedAt\": \"2015-07-15 17:25:43\",\n        \"discussionsUpdatedAt\": \"2015-07-15 17:26:32\"\n      }\n ]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/ChallengeController.php",
+    "groupTitle": "Challenges"
+  },
+  {
+    "type": "get",
+    "url": "/challenge/:challengeId/leaderboard",
+    "title": "list of leaderBoard for a challenge",
+    "name": "GetLeaderBoardOfChallenge",
+    "group": "Challenges",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n[\n\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/ChallengeController.php",
+    "groupTitle": "Challenges"
+  },
+  {
+    "type": "get",
+    "url": "/challenge/:challengeId/resource",
+    "title": "list of Resources for a challenge",
+    "description": "<p><code>Need To Be Revised</code></p> ",
+    "name": "GetResourcesOfChallenge",
+    "group": "Challenges",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"Admin\": [\n        {\n          \"resourceId\": 9,\n          \"resourceName\": \"acb\",\n          \"resourceUrl\": \"asdawqw\"\n        }\n      ],\n      \"Nodal Officer\": [\n        {\n          \"resourceId\": 10,\n          \"resourceName\": \"sadqweq\",\n          \"resourceUrl\": \"asdawqw\"\n        }\n      ]\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/ChallengeController.php",
+    "groupTitle": "Challenges"
+  },
+  {
+    "type": "get",
+    "url": "/challenge/:challengeId/sibling",
+    "title": "Get all challenges belonging to the achievement, which is the parent of this challenge",
+    "name": "GetSiblingForChallenge",
+    "group": "Challenges",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n[\n  {\n    \"achievementId\": 1,\n    \"achievementName\": \"SchoolBank Champ Beginner\",\n    \"achievementShortDescription\": \"Understands what is a SchoolBank Champ and knows about Paise Bachao Sapne Sajao\",\n    \"data\": [\n      {\n        \"challengeName\": \"Who is a SchoolBank Champ?\",\n        \"challengeId\": 1,\n        \"challengeStep\": 1\n      },\n      {\n        \"challengeName\": \"What is Paise Bachao Sapne Sajao?\",\n        \"challengeId\": 2,\n        \"challengeStep\": 2\n      }\n    ]\n  }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/ChallengeController.php",
+    "groupTitle": "Challenges"
+  },
+  {
+    "type": "get",
     "url": "/course/:courseId/detail",
     "title": "Detail for a course",
     "name": "GetCourseDetail",
@@ -470,6 +547,25 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "app/Http/Controllers/CourseController.php",
     "groupTitle": "Courses"
+  },
+  {
+    "type": "get",
+    "url": "/discussion/:discussionId",
+    "title": "detailed data about the discussion with replies",
+    "name": "DiscussionDetail",
+    "group": "Discussions",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"id\": 1,\n      \"subject\": \"skdjadhas\",\n      \"text\": \"ahsdjahdkjasdnkjashdasjkla salksaj askjd\",\n      \"createdById\": 1,\n      \"createdByName\": null,\n      \"replies\": [\n        {\n          \"id\": 1,\n          \"text\": \"asdnalksdjadk\",\n          \"upvotes\": 3,\n          \"discussion_id\": 1,\n          \"created_by\": 2,\n          \"created_at\": \"2015-07-12 12:48:30\",\n          \"updated_at\": \"2015-07-12 15:37:17\",\n          \"createdByName\": null\n        },\n        {\n          \"id\": 2,\n          \"text\": \"asdnalksdjadasdak\",\n          \"upvotes\": 3,\n          \"discussion_id\": 1,\n          \"created_by\": 1,\n          \"created_at\": \"2015-07-12 12:48:50\",\n          \"updated_at\": \"2015-07-12 15:37:23\",\n          \"createdByName\": null\n        }\n      ]\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/DiscussionController.php",
+    "groupTitle": "Discussions"
   },
   {
     "type": "get",
@@ -3178,6 +3274,464 @@ define({ "api": [
         }
       ]
     }
+  },
+  {
+    "type": "get",
+    "url": "/me/quest/:questId/challenge",
+    "title": "List of challenges in the quest with the record of completion for the user",
+    "name": "GetMyQuestChallengens",
+    "group": "Me_Quests",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    [\n      {\n        \"achievementId\": 1,\n        \"achievementName\": \"SchoolBank Champ Beginner\",\n        \"achievementShortDescription\": \"Understands what is a SchoolBank Champ and knows about Paise Bachao Sapne Sajao\",\n        \"achievementStep\": 1,\n        \"achievementImgUrl\": \"https://playfoursquare.s3.amazonaws.com/badge/57/jetsetter.png\",\n        \"challenge_completed\": null,\n        \"challenges\": [\n          {\n            \"challengeId\": 1,\n            \"challengeName\": \"Who is a SchoolBank Champ?\",\n            \"challengeShortDescription\": \"Understand how a normal child can become SchoolBank Champ and how can I become a Champ.\",\n            \"challengeStep\": 1,\n            \"questionCount\": 2,\n            \"question_completed\": null\n          },\n          {\n            \"challengeId\": 2,\n            \"challengeName\": \"What is Paise Bachao Sapne Sajao?\",\n            \"challengeShortDescription\": \"What is Paise Bachao Sapne Sajao and how can I build my dreams by saving\",\n            \"challengeStep\": 2,\n            \"questionCount\": 3,\n            \"question_completed\": null\n          }\n        ]\n      },\n      {\n        \"achievementId\": 2,\n        \"achievementName\": \"SMART Saver\",\n        \"achievementShortDescription\": \"Understands the difference between Needs and Wants, and can create a SMART plan to achieve them\",\n        \"achievementStep\": 2,\n        \"achievementImgUrl\": \"https://playfoursquare.s3.amazonaws.com/badge/57/bravo_real_housewife.png\",\n        \"challenge_completed\": null,\n        \"challenges\": [\n          {\n            \"challengeId\": 3,\n            \"challengeName\": \"What is difference between Need and Want?\",\n            \"challengeShortDescription\": \"Try to understand the difference between needs and wants\",\n            \"challengeStep\": 1,\n            \"questionCount\": 2,\n            \"question_completed\": null\n          },\n          {\n            \"challengeId\": 4,\n            \"challengeName\": \"SMART planning to purchase the items\",\n            \"challengeShortDescription\": \"Make up a SMART plan to achieve your needs and wants by saving money\",\n            \"challengeStep\": 2,\n            \"questionCount\": 1,\n            \"question_completed\": null\n          }\n        ]\n      }\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserQuestController.php",
+    "groupTitle": "Me_Quests",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/me/quest",
+    "title": "List of paginated user quests",
+    "name": "GetMyQuestPaginatedList",
+    "group": "Me_Quests",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Page number of the list.</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "id",
+            "description": "<p>quest Id</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "name",
+            "description": "<p>quest name</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "short_description",
+            "description": "<p>quest Short Description</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "img_url",
+            "description": "<p>quest Image Url</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "quest_type_name",
+            "description": "<p>quest type, it is for now always learning</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "achievementCount",
+            "description": "<p>Number of achievements in the quest</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "achievementCompleted",
+            "description": "<p>Number of achievement completed</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "score",
+            "description": "<p>Score achieved by the user</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"per_page\": 10,\n      \"current_page\": 1,\n      \"next_page_url\": null,\n      \"prev_page_url\": null,\n      \"from\": 1,\n      \"to\": 1,\n      \"data\": [\n        {\n          \"name\": \"School Bank Champs\",\n          \"shortDescription\": \"Healthy Friendships, Social and Financial Collaboration, Personal and Financial Safety\",\n          \"id\": 1,\n          \"status\": \"inprogress\",\n          \"score\": 0,\n          \"img_url\": \"http://www.schoolbankchamps.com/assets/img/slide/3.png\",\n          \"quest_type_name\": \"learning\",\n          \"achievementCompleted\": 0,\n          \"achievementCount\": 2\n        }\n      ]\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserQuestController.php",
+    "groupTitle": "Me_Quests",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/quest/:questId/about",
+    "title": "about of the quest",
+    "name": "GetAboutForQuest",
+    "group": "Quests",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "long_description",
+            "description": "<p>quest Short Description</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"long_description\": null\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/QuestController.php",
+    "groupTitle": "Quests"
+  },
+  {
+    "type": "get",
+    "url": "/quest/:questId",
+    "title": "Combined API for a quest",
+    "name": "GetAllDataOfQuest",
+    "group": "Quests",
+    "description": "<p>It is a combined api containing all fields for the tabs in quest. <code>Use only if required</code>, since it will be huge api to consume</p> ",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"info\": {\n    \"id\": 1,\n    \"name\": \"School Bank Champs\",\n    \"img_url\": \"http://www.schoolbankchamps.com/assets/img/slide/3.png\",\n    \"short_description\": \"Healthy Friendships, Social and Financial Collaboration, Personal and Financial Safety\"\n  },\n  \"about\": {\n    \"long_description\": null\n  },\n  \"achievement\": [\n    {\n      \"achievementId\": 1,\n      \"achievementName\": \"SchoolBank Champ Beginner\",\n      \"achievementStep\": 1,\n      \"achievementShortDescription\": \"Understands what is a SchoolBank Champ and knows about Paise Bachao Sapne Sajao\",\n      \"achievementImgUrl\": \"https://playfoursquare.s3.amazonaws.com/badge/57/jetsetter.png\",\n      \"challenges\": [\n        {\n          \"challengeId\": 1,\n          \"challengeName\": \"Who is a SchoolBank Champ?\",\n          \"challengeShortDescription\": \"Understand how a normal child can become SchoolBank Champ and how can I become a Champ.\",\n          \"challengeStep\": 1,\n          \"questionCount\": 2\n        },\n        {\n          \"challengeId\": 2,\n          \"challengeName\": \"What is Paise Bachao Sapne Sajao?\",\n          \"challengeShortDescription\": \"What is Paise Bachao Sapne Sajao and how can I build my dreams by saving\",\n          \"challengeStep\": 2,\n          \"questionCount\": 3\n        }\n      ]\n    },\n    {\n      \"achievementId\": 2,\n      \"achievementName\": \"SMART Saver\",\n      \"achievementStep\": 2,\n      \"achievementShortDescription\": \"Understands the difference between Needs and Wants, and can create a SMART plan to achieve them\",\n      \"achievementImgUrl\": \"https://playfoursquare.s3.amazonaws.com/badge/57/bravo_real_housewife.png\",\n      \"challenges\": [\n        {\n          \"challengeId\": 3,\n          \"challengeName\": \"What is difference between Need and Want?\",\n          \"challengeShortDescription\": \"Try to understand the difference between needs and wants\",\n          \"challengeStep\": 1,\n          \"questionCount\": 2\n        },\n        {\n          \"challengeId\": 4,\n          \"challengeName\": \"SMART planning to purchase the items\",\n          \"challengeShortDescription\": \"Make up a SMART plan to achieve your needs and wants by saving money\",\n          \"challengeStep\": 2,\n          \"questionCount\": 1\n        }\n      ]\n    }\n  ],\n  \"resource\": {\n    \"Admin\": [\n      {\n        \"typeId\": 1,\n        \"type\": \"challenges\",\n        \"name\": \"Who is a SchoolBank Champ?\",\n        \"resourceId\": 9,\n        \"resourceName\": \"acb\",\n        \"resource_type\": \"text\",\n        \"url\": \"asdawqw\"\n      },\n      {\n        \"typeId\": 2,\n        \"type\": \"challenges\",\n        \"name\": \"What is Paise Bachao Sapne Sajao?\",\n        \"resourceId\": 8,\n        \"resourceName\": \"acb\",\n        \"resource_type\": \"text\",\n        \"url\": \"asjda\"\n      },\n      {\n        \"typeId\": 2,\n        \"type\": \"achievements\",\n        \"name\": \"SMART Saver\",\n        \"resourceId\": 7,\n        \"resourceName\": \"Resource 3\",\n        \"resource_type\": \"video\",\n        \"url\": \"random random random\"\n      },\n      {\n        \"typeId\": 1,\n        \"type\": \"quests\",\n        \"name\": \"School Bank Champs\",\n        \"resourceId\": 1,\n        \"resourceName\": \"Resource 1\",\n        \"resource_type\": \"video\",\n        \"url\": \"random\"\n      }\n    ],\n    \"Nodal Officer\": [\n      {\n        \"typeId\": 1,\n        \"type\": \"challenges\",\n        \"name\": \"Who is a SchoolBank Champ?\",\n        \"resourceId\": 10,\n        \"resourceName\": \"sadqweq\",\n        \"resource_type\": \"video\",\n        \"url\": \"asdawqw\"\n      },\n      {\n        \"typeId\": 1,\n        \"type\": \"quests\",\n        \"name\": \"School Bank Champs\",\n        \"resourceId\": 2,\n        \"resourceName\": \"Resource 2\",\n        \"resource_type\": \"text\",\n        \"url\": \"random random\"\n      }\n    ]\n  },\n  \"discussion\": [\n    {\n      \"typeId\": 1,\n      \"type\": \"quests\",\n      \"name\": \"School Bank Champs\",\n      \"discussionId\": 1,\n      \"discussionSubject\": \"skdjadhas\",\n      \"discussionText\": \"ahsdjahdkjasdnkjashdasjkla salksaj askjd\",\n      \"repliesCount\": 2,\n      \"creatorId\": null,\n      \"creatorName\": null\n    },\n    {\n      \"typeId\": 1,\n      \"type\": \"quests\",\n      \"name\": \"School Bank Champs\",\n      \"discussionId\": 2,\n      \"discussionSubject\": \"random question\",\n      \"discussionText\": \"ahsdjahdkjasdnkjashdasjkla salksaj askjd\",\n      \"repliesCount\": 0,\n      \"creatorId\": null,\n      \"creatorName\": null\n    },\n    {\n      \"typeId\": 1,\n      \"type\": \"challenges\",\n      \"name\": \"Who is a SchoolBank Champ?\",\n      \"discussionId\": 3,\n      \"discussionSubject\": \"heellll\",\n      \"discussionText\": \"challenge 1\",\n      \"repliesCount\": 0,\n      \"creatorId\": null,\n      \"creatorName\": null\n    },\n    {\n      \"typeId\": 2,\n      \"type\": \"challenges\",\n      \"name\": \"What is Paise Bachao Sapne Sajao?\",\n      \"discussionId\": 4,\n      \"discussionSubject\": \"helll\",\n      \"discussionText\": \"challenge2\",\n      \"repliesCount\": 0,\n      \"creatorId\": null,\n      \"creatorName\": null\n    },\n    {\n      \"typeId\": 2,\n      \"type\": \"challenges\",\n      \"name\": \"What is Paise Bachao Sapne Sajao?\",\n      \"discussionId\": 5,\n      \"discussionSubject\": \"yo\",\n      \"discussionText\": \"challenge2 -d2\",\n      \"repliesCount\": 0,\n      \"creatorId\": null,\n      \"creatorName\": null\n    }\n  ],\n  \"leaderBoard\": []\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/QuestController.php",
+    "groupTitle": "Quests"
+  },
+  {
+    "type": "get",
+    "url": "/quest/:questId/challenge",
+    "title": "list of achievement->challenges for a quest",
+    "name": "GetChallengesOfQuest",
+    "group": "Quests",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    [\n      {\n        \"achievementId\": 1,\n        \"achievementName\": \"SchoolBank Champ Beginner\",\n        \"achievementStep\": 1,\n        \"achievementShortDescription\": \"Understands what is a SchoolBank Champ and knows about Paise Bachao Sapne Sajao\",\n        \"achievementImgUrl\": \"https://playfoursquare.s3.amazonaws.com/badge/57/jetsetter.png\",\n        \"challenges\": [\n          {\n            \"challengeId\": 1,\n            \"challengeName\": \"Who is a SchoolBank Champ?\",\n            \"challengeShortDescription\": \"Understand how a normal child can become SchoolBank Champ and how can I become a Champ.\",\n            \"challengeStep\": 1,\n            \"questionCount\": 2\n          },\n          {\n            \"challengeId\": 2,\n            \"challengeName\": \"What is Paise Bachao Sapne Sajao?\",\n            \"challengeShortDescription\": \"What is Paise Bachao Sapne Sajao and how can I build my dreams by saving\",\n            \"challengeStep\": 2,\n            \"questionCount\": 3\n          }\n        ]\n      },\n      {\n        \"achievementId\": 2,\n        \"achievementName\": \"SMART Saver\",\n        \"achievementStep\": 2,\n        \"achievementShortDescription\": \"Understands the difference between Needs and Wants, and can create a SMART plan to achieve them\",\n        \"achievementImgUrl\": \"https://playfoursquare.s3.amazonaws.com/badge/57/bravo_real_housewife.png\",\n        \"challenges\": [\n          {\n            \"challengeId\": 3,\n            \"challengeName\": \"What is difference between Need and Want?\",\n            \"challengeShortDescription\": \"Try to understand the difference between needs and wants\",\n            \"challengeStep\": 1,\n            \"questionCount\": 2\n          },\n          {\n            \"challengeId\": 4,\n            \"challengeName\": \"SMART planning to purchase the items\",\n            \"challengeShortDescription\": \"Make up a SMART plan to achieve your needs and wants by saving money\",\n            \"challengeStep\": 2,\n            \"questionCount\": 1\n          }\n        ]\n      }\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/QuestController.php",
+    "groupTitle": "Quests"
+  },
+  {
+    "type": "get",
+    "url": "/quest/:questId/discussion",
+    "title": "list of discussion for a quest",
+    "name": "GetDiscussionOfQuest",
+    "group": "Quests",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n[\n  {\n    \"typeId\": 1,\n    \"type\": \"quests\",\n    \"name\": \"School Bank Champs\",\n    \"discussionId\": 1,\n    \"discussionSubject\": \"skdjadhas\",\n    \"discussionText\": \"ahsdjahdkjasdnkjashdasjkla salksaj askjd\",\n    \"repliesCount\": 2,\n    \"creatorId\": null,\n    \"creatorName\": null\n  },\n  {\n    \"typeId\": 1,\n    \"type\": \"quests\",\n    \"name\": \"School Bank Champs\",\n    \"discussionId\": 2,\n    \"discussionSubject\": \"random question\",\n    \"discussionText\": \"ahsdjahdkjasdnkjashdasjkla salksaj askjd\",\n    \"repliesCount\": 0,\n    \"creatorId\": null,\n    \"creatorName\": null\n  },\n  {\n    \"typeId\": 1,\n    \"type\": \"challenges\",\n    \"name\": \"Who is a SchoolBank Champ?\",\n    \"discussionId\": 3,\n    \"discussionSubject\": \"heellll\",\n    \"discussionText\": \"challenge 1\",\n    \"repliesCount\": 0,\n    \"creatorId\": null,\n    \"creatorName\": null\n  },\n  {\n    \"typeId\": 2,\n    \"type\": \"challenges\",\n    \"name\": \"What is Paise Bachao Sapne Sajao?\",\n    \"discussionId\": 4,\n    \"discussionSubject\": \"helll\",\n    \"discussionText\": \"challenge2\",\n    \"repliesCount\": 0,\n    \"creatorId\": null,\n    \"creatorName\": null\n  },\n  {\n    \"typeId\": 2,\n    \"type\": \"challenges\",\n    \"name\": \"What is Paise Bachao Sapne Sajao?\",\n    \"discussionId\": 5,\n    \"discussionSubject\": \"yo\",\n    \"discussionText\": \"challenge2 -d2\",\n    \"repliesCount\": 0,\n    \"creatorId\": null,\n    \"creatorName\": null\n  }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/QuestController.php",
+    "groupTitle": "Quests"
+  },
+  {
+    "type": "get",
+    "url": "/quest/:questId/info",
+    "title": "Info for a quest",
+    "name": "GetInfoOfQuest",
+    "group": "Quests",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "id",
+            "description": "<p>quest Id</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "name",
+            "description": "<p>quest name</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "short_description",
+            "description": "<p>quest Short Description</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "img_url",
+            "description": "<p>quest Image Url</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "allowedValues": [
+              "'true'",
+              "'false'"
+            ],
+            "optional": false,
+            "field": "partOf",
+            "description": "<p>A global variable that is 'true' for logged in user, if he has joined the quest, for not logged in user and not joined users it is 'false'</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"id\": 1,\n      \"name\": \"School Bank Champs\",\n      \"img_url\": \"http://www.schoolbankchamps.com/assets/img/slide/3.png\",\n      \"short_description\": \"Healthy Friendships, Social and Financial Collaboration, Personal and Financial Safety\",\n      \"partOf\": \"false\"\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/QuestController.php",
+    "groupTitle": "Quests"
+  },
+  {
+    "type": "get",
+    "url": "/quest/:questId/leaderboard",
+    "title": "list of leaderBoard for a quest",
+    "name": "GetLeaderBoardOfQuest",
+    "group": "Quests",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n[\n\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/QuestController.php",
+    "groupTitle": "Quests"
+  },
+  {
+    "type": "get",
+    "url": "/quest",
+    "title": "paginated detail list of Quest",
+    "name": "GetPaginatedQuestList",
+    "group": "Quests",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "id",
+            "description": "<p>quest Id</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "name",
+            "description": "<p>quest name</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "short_description",
+            "description": "<p>quest Short Description</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "img_url",
+            "description": "<p>quest Image Url</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "quest_type_name",
+            "description": "<p>quest type, it is for now always learning</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "achievementCount",
+            "description": "<p>Number of achievements in the quest</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"per_page\": 10,\n      \"current_page\": 1,\n      \"next_page_url\": null,\n      \"prev_page_url\": null,\n      \"from\": 1,\n      \"to\": 1,\n      \"data\": [\n        {\n          \"id\": 1,\n          \"name\": \"School Bank Champs\",\n          \"short_description\": \"Healthy Friendships, Social and Financial Collaboration, Personal and Financial Safety\",\n          \"img_url\": \"http://www.schoolbankchamps.com/assets/img/slide/3.png\",\n          \"quest_type_name\": \"learning\",\n          \"achievementCount\": 2\n        }\n      ]\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Page number of the list.</p> "
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/QuestController.php",
+    "groupTitle": "Quests"
+  },
+  {
+    "type": "get",
+    "url": "/quest/:questId/resource",
+    "title": "list of Resources for a quest",
+    "description": "<p><code>Need To Be Revised</code></p> ",
+    "name": "GetResourcesOfQuest",
+    "group": "Quests",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"Admin\": [\n        {\n          \"typeId\": 1,\n          \"type\": \"challenges\",\n          \"name\": \"Who is a SchoolBank Champ?\",\n          \"resourceId\": 9,\n          \"resourceName\": \"acb\",\n          \"resource_type\": \"text\",\n          \"url\": \"asdawqw\"\n        },\n        {\n          \"typeId\": 2,\n          \"type\": \"challenges\",\n          \"name\": \"What is Paise Bachao Sapne Sajao?\",\n          \"resourceId\": 8,\n          \"resourceName\": \"acb\",\n          \"resource_type\": \"text\",\n          \"url\": \"asjda\"\n        },\n        {\n          \"typeId\": 2,\n          \"type\": \"achievements\",\n          \"name\": \"SMART Saver\",\n          \"resourceId\": 7,\n          \"resourceName\": \"Resource 3\",\n          \"resource_type\": \"video\",\n          \"url\": \"random random random\"\n        },\n        {\n          \"typeId\": 1,\n          \"type\": \"quests\",\n          \"name\": \"School Bank Champs\",\n          \"resourceId\": 1,\n          \"resourceName\": \"Resource 1\",\n          \"resource_type\": \"video\",\n          \"url\": \"random\"\n        }\n      ],\n      \"Nodal Officer\": [\n        {\n          \"typeId\": 1,\n          \"type\": \"challenges\",\n          \"name\": \"Who is a SchoolBank Champ?\",\n          \"resourceId\": 10,\n          \"resourceName\": \"sadqweq\",\n          \"resource_type\": \"video\",\n          \"url\": \"asdawqw\"\n        },\n        {\n          \"typeId\": 1,\n          \"type\": \"quests\",\n          \"name\": \"School Bank Champs\",\n          \"resourceId\": 2,\n          \"resourceName\": \"Resource 2\",\n          \"resource_type\": \"text\",\n          \"url\": \"random random\"\n        }\n      ]\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/QuestController.php",
+    "groupTitle": "Quests"
   },
   {
     "type": "get",
