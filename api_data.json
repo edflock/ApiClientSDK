@@ -389,6 +389,36 @@
   },
   {
     "type": "get",
+    "url": "/course/group/:groupId/activities",
+    "title": "List of all activities in a group of course",
+    "name": "GetCourseGroupActivities",
+    "group": "Courses",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>array</p> ",
+            "optional": false,
+            "field": "Complex",
+            "description": "<p>List of activities</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n\n    [\n      {\n        \"id\": 7,\n        \"courseGroupId\": 2,\n        \"courseGroupCategoryId\": 2,\n        \"courseGroupCategoryStep\": 1,\n        \"resourceTitle\": \"Difference Between Need and Want\",\n        \"resourceType\": \"text\",\n        \"hashId\": 11112\n      },\n      {\n        \"id\": 8,\n        \"courseGroupId\": 2,\n        \"courseGroupCategoryId\": 2,\n        \"courseGroupCategoryStep\": 2,\n        \"resourceTitle\": \"List of Items to Save for\",\n        \"resourceType\": \"text\",\n        \"hashId\": 11113\n      },\n      {\n        \"id\": 9,\n        \"courseGroupId\": 2,\n        \"courseGroupCategoryId\": 2,\n        \"courseGroupCategoryStep\": 3,\n        \"resourceTitle\": \"Make a SMART plan for how they might save up to purchase the item\",\n        \"resourceType\": \"text\",\n        \"hashId\": 11114\n      }\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/CourseController.php",
+    "groupTitle": "Courses"
+  },
+  {
+    "type": "get",
     "url": "/course",
     "title": "paginated detail list",
     "name": "GetCourseList",
