@@ -419,6 +419,36 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/course/group/:groupId/materials",
+    "title": "List of all materials in a group of course",
+    "name": "GetCourseGroupMaterial",
+    "group": "Courses",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>array</p> ",
+            "optional": false,
+            "field": "Complex",
+            "description": "<p>List of materials</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n\n    [\n      {\n        \"id\": 6,\n        \"courseGroupId\": 1,\n        \"courseGroupCategoryId\": 3,\n        \"courseGroupCategoryStep\": 1,\n        \"resourceTitle\": \"SchoolBank Champs and their friends Story\",\n        \"resourceType\": \"text\",\n        \"hashId\": 11111\n      }\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/CourseController.php",
+    "groupTitle": "Courses"
+  },
+  {
+    "type": "get",
     "url": "/course",
     "title": "paginated detail list",
     "name": "GetCourseList",
