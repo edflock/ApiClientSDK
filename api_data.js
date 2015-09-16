@@ -481,7 +481,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/course/:courseId",
+    "url": "/course/:courseId/teacherresource",
     "title": "List of all resources for teacher",
     "name": "GetCourseTeacherResources",
     "group": "Courses",
