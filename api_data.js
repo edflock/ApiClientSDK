@@ -1283,7 +1283,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/me/class/:classId/user",
+    "url": "/me/class/:classId/people",
     "title": "add existing user in a class",
     "name": "AddExistingUsertoClass",
     "group": "Me_Classes",
