@@ -2105,6 +2105,76 @@
   },
   {
     "type": "get",
+    "url": "/me/course/short",
+    "title": "short detail list with course joined/Bought",
+    "name": "GetCourseListShortWithJoined",
+    "group": "Me_Courses",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>array</p> ",
+            "optional": false,
+            "field": "List",
+            "description": "<p>Paginated List of the courses</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    [\n      {\n        \"courseId\": 1,\n        \"courseName\": \"School Bank Champs Junior\",\n        \"shortDescription\": \"Social and Financial Education for Children Ages 10-14\"\n      },\n      {\n        \"courseId\": 2,\n        \"courseName\": \"School Bank Champs Senior\",\n        \"shortDescription\": \"Social and Financial Education for Young People Ages 15 and above\"\n      }\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserCourseController.php",
+    "groupTitle": "Me_Courses",
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
     "url": "/me/course",
     "title": "paginated detail list with course joined/Bought",
     "name": "GetCourseListWithJoined",
@@ -2242,7 +2312,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n\"id\": 1,\n\"name\": \"School Bank Champs Junior\",\n\"shortDescription\": \"Social and Financial Education for Children Ages 10-14\",\n\"longDescription\": \"A Class Course for Social and Financial Education for Children\",\n\"img_url\": null,\n\"joined\": 1\n}",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 1,\n    \"name\": \"School Bank Champs Junior\",\n    \"shortDescription\": \"Social and Financial Education for Children Ages 10-14\",\n    \"longDescription\": \"A Class Course for Social and Financial Education for Children\",\n    \"img_url\": null,\n    \"joined\": 1\n}",
           "type": "json"
         }
       ]
@@ -3287,6 +3357,65 @@
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n    [\n      {\n        \"id\": 139,\n        \"name\": \"Abhyudaya Co-op. Bank Ltd.\",\n        \"short_description\": \"Abhyudaya Bank\"\n      },\n      {\n        \"id\": 140,\n        \"name\": \"Seawood\",\n        \"short_description\": \"Seawood Branch\"\n      },\n      {\n        \"id\": 143,\n        \"name\": \"1 A\",\n        \"short_description\": null\n      },\n      {\n        \"id\": 145,\n        \"name\": \"2 A\",\n        \"short_description\": null\n      },\n      {\n        \"id\": 146,\n        \"name\": \"3 A\",\n        \"short_description\": null\n      },\n      {\n        \"id\": 148,\n        \"name\": \"abcns\",\n        \"short_description\": \"asdasd\"\n      },\n      {\n        \"id\": 149,\n        \"name\": \"abcns\",\n        \"short_description\": \"asdasd\"\n      }\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserGroupController.php",
+    "groupTitle": "Me_Groups",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/me/group/short",
+    "title": "Short List of the users Group",
+    "name": "shortGroups",
+    "group": "Me_Groups",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "[\n  {\n    \"groupId\": 664,\n    \"groupName\": \"Abhyudaya Co-op. Bank Ltd.\",\n    \"shortDescription\": null\n  },\n  {\n    \"groupId\": 665,\n    \"groupName\": \"Seawood\",\n    \"shortDescription\": null\n  }\n]",
           "type": "json"
         }
       ]
