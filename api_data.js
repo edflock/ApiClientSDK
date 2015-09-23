@@ -4132,8 +4132,8 @@ define({ "api": [
             "group": "Parameter",
             "type": "<p>String</p> ",
             "allowedValues": [
-              "\"true\"",
-              "\"false\""
+              "\"group\"",
+              "\"class\""
             ],
             "optional": false,
             "field": "object",
