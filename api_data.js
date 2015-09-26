@@ -1160,58 +1160,6 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/group/:groupId/subgroup/usermap",
-    "title": "List of all people in all subgroups (object Type)",
-    "name": "GetSubGroupsAllClasses",
-    "group": "Groups",
-    "description": "<p>here subgroup id are used as object key</p> ",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "<p>String</p> ",
-            "optional": false,
-            "field": "object-key",
-            "description": "<p>group id's</p> "
-          },
-          {
-            "group": "Success 200",
-            "type": "<p>String</p> ",
-            "optional": false,
-            "field": "userName",
-            "description": "<p>Name of the user</p> "
-          },
-          {
-            "group": "Success 200",
-            "type": "<p>String</p> ",
-            "optional": false,
-            "field": "roleName",
-            "description": "<p>Name of their role</p> "
-          },
-          {
-            "group": "Success 200",
-            "type": "<p>number</p> ",
-            "optional": false,
-            "field": "userId",
-            "description": "<p>Id of the user</p> "
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n    {\n        \"143\": [\n            {\n                \"userId\": 57,\n                \"userName\": \"P M Mandke\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 58,\n                \"userName\": \"Abhyudaya Admin\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 61,\n                \"userName\": \"JYOLSNA NAIR\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 63,\n                \"userName\": \"ujjwal\",\n                \"roleName\": \"Student\"\n            }\n        ],\n        \"144\": [\n            {\n                \"userId\": 57,\n                \"userName\": \"P M Mandke\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 61,\n                \"userName\": \"JYOLSNA NAIR\",\n                \"roleName\": \"Admin\"\n            }\n        ],\n        \"145\": [\n            {\n                \"userId\": 61,\n                \"userName\": \"JYOLSNA NAIR\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 62,\n                \"userName\": \"Utkarsh shukla\",\n                \"roleName\": \"Admin\"\n            }\n        ],\n        \"146\": [\n            {\n                \"userId\": 60,\n                \"userName\": \"BHAGWAT BHOSALE\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 61,\n                \"userName\": \"JYOLSNA NAIR\",\n                \"roleName\": \"Admin\"\n            }\n        ]\n    }",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "app/Http/Controllers/GroupController.php",
-    "groupTitle": "Groups"
-  },
-  {
-    "type": "get",
     "url": "/group/:groupId/subgroup/classmap",
     "title": "List of all classes in all subgroups",
     "name": "GetSubGroupsAllClasses",
@@ -1254,6 +1202,58 @@ define({ "api": [
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n    {\n      \"143\": [\n        {\n          \"classId\": 28,\n          \"className\": \"1 A : School Bank Champs Junior\",\n          \"shortDescription\": null\n        }\n      ],\n      \"144\": [\n        {\n          \"classId\": 29,\n          \"className\": \"1 B : School Bank Champs Junior\",\n          \"shortDescription\": null\n        }\n      ],\n      \"145\": [\n        {\n          \"classId\": 30,\n          \"className\": \"2 A : School Bank Champs Senior\",\n          \"shortDescription\": null\n        }\n      ],\n      \"146\": [\n        {\n          \"classId\": 31,\n          \"className\": \"3 A : School Bank Champs Senior\",\n          \"shortDescription\": null\n        }\n      ]\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/GroupController.php",
+    "groupTitle": "Groups"
+  },
+  {
+    "type": "get",
+    "url": "/group/:groupId/subgroup/usermap",
+    "title": "List of all people in all subgroups (object Type)",
+    "name": "GetSubGroupsAllClasses",
+    "group": "Groups",
+    "description": "<p>here subgroup id are used as object key</p> ",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "object-key",
+            "description": "<p>group id's</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "userName",
+            "description": "<p>Name of the user</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "roleName",
+            "description": "<p>Name of their role</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>number</p> ",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>Id of the user</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\n        \"143\": [\n            {\n                \"userId\": 57,\n                \"userName\": \"P M Mandke\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 58,\n                \"userName\": \"Abhyudaya Admin\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 61,\n                \"userName\": \"JYOLSNA NAIR\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 63,\n                \"userName\": \"ujjwal\",\n                \"roleName\": \"Student\"\n            }\n        ],\n        \"144\": [\n            {\n                \"userId\": 57,\n                \"userName\": \"P M Mandke\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 61,\n                \"userName\": \"JYOLSNA NAIR\",\n                \"roleName\": \"Admin\"\n            }\n        ],\n        \"145\": [\n            {\n                \"userId\": 61,\n                \"userName\": \"JYOLSNA NAIR\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 62,\n                \"userName\": \"Utkarsh shukla\",\n                \"roleName\": \"Admin\"\n            }\n        ],\n        \"146\": [\n            {\n                \"userId\": 60,\n                \"userName\": \"BHAGWAT BHOSALE\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 61,\n                \"userName\": \"JYOLSNA NAIR\",\n                \"roleName\": \"Admin\"\n            }\n        ]\n    }",
           "type": "json"
         }
       ]
@@ -1879,6 +1879,79 @@ define({ "api": [
         {
           "title": "Authorization-Error-Example",
           "content": "HTTP/1.1 422 Unprocessable Entity\n    {\n      \"error\": {\n        \"code\": \"GEN-FORBIDDEN\",\n        \"http_code\": 403,\n        \"message\": \"Forbidden\"\n      }\n    }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/me/class/:classId/leave",
+    "title": "Leave a class",
+    "name": "LeaveLoggedInUserFromClass",
+    "group": "Me_Classes",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"success\": \"true\"\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserClassController.php",
+    "groupTitle": "Me_Classes",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ],
+        "Error 422": [
+          {
+            "group": "Error422",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "UNPROCESSABLE-ENTITY",
+            "description": "<p>The <code>user</code> is present in the group/class. The repeatation of the data, breaking db constraint gives this error.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        },
+        {
+          "title": "Unprocessable-Entity-Example",
+          "content": "HTTP/1.1 422 Unprocessable Entity\n    {\n        \"error\": \"User exists in the group\"\n    }",
           "type": "json"
         }
       ]
@@ -4018,6 +4091,99 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "app/Http/Controllers/UserController.php",
     "groupTitle": "Users"
+  },
+  {
+    "type": "post",
+    "url": "/me/people/create",
+    "title": "Create new people",
+    "name": "addPeople",
+    "group": "Users",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "studentName",
+            "description": "<p>Name of the minor student</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "parentName",
+            "description": "<p>Name of the parent*</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "parentEmail",
+            "description": "<p>Email of the parent</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "parentPhone",
+            "description": "<p>9-12 digit phone number, prefer mobile so 10</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserController.php",
+    "groupTitle": "Users",
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    }
   },
   {
     "type": "post",
