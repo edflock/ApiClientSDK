@@ -1371,7 +1371,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "    HTTP/1.1 200 OK\n[\n     {\n         \"name\":\"Abhyudaya Admin\",\n         \"username\":\"abhyudayaadmin\",\n         \"roleName\":\"Admin\",\n         \"userId\":58\n     }\n]",
+          "content": "HTTP/1.1 200 OK\n {\n     \"name\":\"Abhyudaya Admin\",\n     \"username\":\"abhyudayaadmin\",\n     \"roleName\":\"Admin\",\n     \"userId\":58\n }",
           "type": "json"
         }
       ]
