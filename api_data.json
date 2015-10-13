@@ -1691,9 +1691,22 @@
   {
     "type": "get",
     "url": "/me/class",
-    "title": "List of paginated user class",
+    "title": "List of user class",
     "name": "GetMyClassPaginatedList",
     "group": "Me_Classes",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "group",
+            "description": "<p>Group Id.</p> "
+          }
+        ]
+      }
+    },
     "success": {
       "fields": {
         "Success 200": [
@@ -1762,7 +1775,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n    {\n      \"data\": [\n        {\n          \"id\": 50,\n          \"name\": \"new class 2\",\n          \"shortDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"NC\",\n          \"closed\": 0,\n          \"roleName\": \"Student\",\n          \"groupName\": \"Karnavati Vidya vihar High School\",\n          \"courseName\": \"School Bank Champs Junior\"\n        },\n        {\n          \"id\": 53,\n          \"name\": \"class 1\",\n          \"shortDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"C1\",\n          \"closed\": 0,\n          \"roleName\": \"Principal\",\n          \"groupName\": \"random group\",\n          \"courseName\": \"School Bank Champs Senior\"\n        },\n        {\n          \"id\": 54,\n          \"name\": \"class 1\",\n          \"shortDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"C1\",\n          \"closed\": 0,\n          \"roleName\": \"Principal\",\n          \"groupName\": \"random group\",\n          \"courseName\": \"School Bank Champs Senior\"\n        },\n        {\n          \"id\": 52,\n          \"name\": \"hello\",\n          \"shortDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"H\",\n          \"closed\": 0,\n          \"roleName\": \"Admin\",\n          \"groupName\": \"Abhyudaya Co-op. Bank Ltd.\",\n          \"courseName\": \"School Bank Champs Senior\"\n        },\n        {\n          \"id\": 49,\n          \"name\": \"RANDOM CLASS\",\n          \"shortDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"RC\",\n          \"closed\": 0,\n          \"roleName\": \"Principal\",\n          \"groupName\": \"Abhyudaya Co-op. Bank Ltd.\",\n          \"courseName\": \"School Bank Champs Junior\"\n        }\n      ]\n    }",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"data\": [\n        {\n          \"id\": 50,\n          \"name\": \"new class 2\",\n          \"shortDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"NC\",\n          \"closed\": 0,\n          \"roleName\": \"Student\",\n          \"groupName\": null,\n          \"groupId\": null,\n          \"courseName\": \"School Bank Champs Junior\",\n          \"createdByUserId\": 308,\n          \"createdByUser\": \"School Bank Champ Admin\",\n          \"belongs_to\": \"School Bank Champ Admin\",\n          \"belongs_to_type\": \"user\",\n          \"belongs_to_id\": 308\n        },\n        {\n          \"id\": 53,\n          \"name\": \"class 1\",\n          \"shortDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"C1\",\n          \"closed\": 0,\n          \"roleName\": \"Principal\",\n          \"groupName\": \"random group\",\n          \"groupId\": 1392,\n          \"courseName\": \"School Bank Champs Senior\",\n          \"createdByUserId\": 308,\n          \"createdByUser\": \"School Bank Champ Admin\",\n          \"belongs_to\": \"random group\",\n          \"belongs_to_type\": \"group\",\n          \"belongs_to_id\": 1392\n        },\n        {\n          \"id\": 54,\n          \"name\": \"class 1\",\n          \"shortDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"C1\",\n          \"closed\": 0,\n          \"roleName\": \"Principal\",\n          \"groupName\": \"random group\",\n          \"groupId\": 1392,\n          \"courseName\": \"School Bank Champs Senior\",\n          \"createdByUserId\": 308,\n          \"createdByUser\": \"School Bank Champ Admin\",\n          \"belongs_to\": \"random group\",\n          \"belongs_to_type\": \"group\",\n          \"belongs_to_id\": 1392\n        },\n        {\n          \"id\": 52,\n          \"name\": \"hello\",\n          \"shortDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"H\",\n          \"closed\": 0,\n          \"roleName\": \"Admin\",\n          \"groupName\": \"Abhyudaya Co-op. Bank Ltd.\",\n          \"groupId\": 664,\n          \"courseName\": \"School Bank Champs Senior\",\n          \"createdByUserId\": 308,\n          \"createdByUser\": \"School Bank Champ Admin\",\n          \"belongs_to\": \"Abhyudaya Co-op. Bank Ltd.\",\n          \"belongs_to_type\": \"group\",\n          \"belongs_to_id\": 664\n        },\n        {\n          \"id\": 49,\n          \"name\": \"RANDOM CLASS\",\n          \"shortDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"RC\",\n          \"closed\": 0,\n          \"roleName\": \"Principal\",\n          \"groupName\": \"Abhyudaya Co-op. Bank Ltd.\",\n          \"groupId\": 664,\n          \"courseName\": \"School Bank Champs Junior\",\n          \"createdByUserId\": 308,\n          \"createdByUser\": \"School Bank Champ Admin\",\n          \"belongs_to\": \"Abhyudaya Co-op. Bank Ltd.\",\n          \"belongs_to_type\": \"group\",\n          \"belongs_to_id\": 664\n        }\n      ]\n    }",
           "type": "json"
         }
       ]
@@ -3599,7 +3612,7 @@
   {
     "type": "get",
     "url": "/me/quest",
-    "title": "List of paginated user quests",
+    "title": "List of user quests",
     "name": "GetMyQuestPaginatedList",
     "group": "Me_Quests",
     "parameter": {
@@ -3609,8 +3622,8 @@
             "group": "Parameter",
             "type": "<p>Number</p> ",
             "optional": false,
-            "field": "page",
-            "description": "<p>Page number of the list.</p> "
+            "field": "group",
+            "description": "<p>Group Id.</p> "
           }
         ]
       }
@@ -3679,7 +3692,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n    {\n      \"per_page\": 10,\n      \"current_page\": 1,\n      \"next_page_url\": null,\n      \"prev_page_url\": null,\n      \"from\": 1,\n      \"to\": 1,\n      \"data\": [\n        {\n          \"name\": \"School Bank Champs\",\n          \"shortDescription\": \"Healthy Friendships, Social and Financial Collaboration, Personal and Financial Safety\",\n          \"id\": 1,\n          \"status\": \"inprogress\",\n          \"score\": 0,\n          \"img_url\": \"http://www.schoolbankchamps.com/assets/img/slide/3.png\",\n          \"quest_type_name\": \"learning\",\n          \"achievementCompleted\": 0,\n          \"achievementCount\": 2\n        }\n      ]\n    }",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"data\": [\n        {\n          \"name\": \"School Bank Champs\",\n          \"shortDescription\": \"Healthy Friendships, Social and Financial Collaboration, Personal and Financial Safety\",\n          \"id\": 1,\n          \"status\": \"inprogress\",\n          \"score\": 200,\n          \"img_url\": \"http://www.schoolbankchamps.com/assets/img/slide/3.png\",\n          \"quest_type_name\": \"learning\",\n          \"achievementCompleted\": 0,\n          \"groupId\": null,\n          \"groupName\": null,\n          \"createdByUserId\": 308,\n          \"createdByUser\": \"School Bank Champ Admin\",\n          \"achievementCount\": 2,\n          \"belongs_to\": \"School Bank Champ Admin\",\n          \"belongs_to_type\": \"user\",\n          \"belongs_to_id\": 308\n        },\n        {\n          \"name\": \"Financial Literacy\",\n          \"shortDescription\": \"A short course for imparting financial literacy to the student\",\n          \"id\": 2,\n          \"status\": \"completed\",\n          \"score\": 50,\n          \"img_url\": \"/assets/images/mainbg.jpg\",\n          \"quest_type_name\": \"learning\",\n          \"achievementCompleted\": 1,\n          \"groupId\": 666,\n          \"groupName\": \"S S HIGH SCHOOL & JUNIOR COLLEGE\",\n          \"createdByUserId\": 308,\n          \"createdByUser\": \"School Bank Champ Admin\",\n          \"achievementCount\": 1,\n          \"belongs_to\": \"S S HIGH SCHOOL & JUNIOR COLLEGE\",\n          \"belongs_to_type\": \"group\",\n          \"belongs_to_id\": 666\n        }\n      ]\n    }",
           "type": "json"
         }
       ]
@@ -3900,7 +3913,7 @@
   {
     "type": "get",
     "url": "/quest",
-    "title": "paginated detail list of Quest",
+    "title": "detail list of Quest",
     "name": "GetPaginatedQuestList",
     "group": "Quests",
     "success": {
@@ -3953,7 +3966,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n    {\n      \"per_page\": 10,\n      \"current_page\": 1,\n      \"next_page_url\": null,\n      \"prev_page_url\": null,\n      \"from\": 1,\n      \"to\": 1,\n      \"data\": [\n        {\n          \"id\": 1,\n          \"name\": \"School Bank Champs\",\n          \"short_description\": \"Healthy Friendships, Social and Financial Collaboration, Personal and Financial Safety\",\n          \"img_url\": \"http://www.schoolbankchamps.com/assets/img/slide/3.png\",\n          \"quest_type_name\": \"learning\",\n          \"achievementCount\": 2\n        }\n      ]\n    }",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"data\": [\n        {\n          \"id\": 1,\n          \"name\": \"School Bank Champs\",\n          \"short_description\": \"Healthy Friendships, Social and Financial Collaboration, Personal and Financial Safety\",\n          \"img_url\": \"http://www.schoolbankchamps.com/assets/img/slide/3.png\",\n          \"quest_type_name\": \"learning\",\n          \"achievementCount\": 2,\n          \"groupId\": null,\n          \"groupName\": null,\n          \"createdByUserId\": 308,\n          \"createdByUser\": \"School Bank Champ Admin\",\n          \"belongs_to\": \"School Bank Champ Admin\",\n          \"belongs_to_type\": \"user\",\n          \"belongs_to_id\": 308\n        },\n        {\n          \"id\": 2,\n          \"name\": \"Financial Literacy\",\n          \"short_description\": \"A short course for imparting financial literacy to the student\",\n          \"img_url\": \"/assets/images/mainbg.jpg\",\n          \"quest_type_name\": \"learning\",\n          \"achievementCount\": 1,\n          \"groupId\": 666,\n          \"groupName\": \"S S HIGH SCHOOL & JUNIOR COLLEGE\",\n          \"createdByUserId\": 308,\n          \"createdByUser\": \"School Bank Champ Admin\",\n          \"belongs_to\": \"S S HIGH SCHOOL & JUNIOR COLLEGE\",\n          \"belongs_to_type\": \"group\",\n          \"belongs_to_id\": 666\n        }\n      ]\n    }",
           "type": "json"
         }
       ]
@@ -3965,8 +3978,8 @@
             "group": "Parameter",
             "type": "<p>Number</p> ",
             "optional": false,
-            "field": "page",
-            "description": "<p>Page number of the list.</p> "
+            "field": "group",
+            "description": "<p>[optional] group id of the group.</p> "
           }
         ]
       }
