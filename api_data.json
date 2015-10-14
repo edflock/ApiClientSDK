@@ -3624,6 +3624,17 @@
             "optional": false,
             "field": "group",
             "description": "<p>Group Id.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "allowedValues": [
+              "sbc",
+              "jandhan"
+            ],
+            "optional": false,
+            "field": "app_type",
+            "description": "<p>Type of app.</p> "
           }
         ]
       }
@@ -3980,6 +3991,17 @@
             "optional": false,
             "field": "group",
             "description": "<p>[optional] group id of the group.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "allowedValues": [
+              "sbc",
+              "jandhan"
+            ],
+            "optional": false,
+            "field": "app_type",
+            "description": "<p>Type of app.</p> "
           }
         ]
       }
