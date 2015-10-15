@@ -84,6 +84,20 @@ define({ "api": [
             "optional": false,
             "field": "password",
             "description": "<p>password for the user.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "userInfo",
+            "description": "<p>Info for the user [optional].</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "deviceId",
+            "description": "<p>password for the user [optional].</p> "
           }
         ]
       }
@@ -196,6 +210,20 @@ define({ "api": [
             "optional": false,
             "field": "doNotSendVerification",
             "description": "<p>if 1 then no activation related actions are taken by the api</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "deviceId",
+            "description": "<p>Device Id [Optional]</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "userInfo",
+            "description": "<p>user Info [Optional]</p> "
           }
         ]
       }
