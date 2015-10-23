@@ -281,6 +281,98 @@
     "groupTitle": "Authentication"
   },
   {
+    "type": "post",
+    "url": "/auth/register/phone",
+    "title": "Register the user to the application using phone",
+    "name": "postRegisterPhone",
+    "group": "Authentication",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "phone",
+            "description": "<p>Users unique identifier, either username or email or phone number is required.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "doNotSendVerification",
+            "description": "<p>if 1 then no activation related actions are taken by the api</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "deviceId",
+            "description": "<p>Device Id [Optional]</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "userInfo",
+            "description": "<p>user Info [Optional]</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>Boolean</p> ",
+            "allowedValues": [
+              "true",
+              "false"
+            ],
+            "optional": false,
+            "field": "Register",
+            "description": "<p>Status of the registration.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"register\": true,\n            \"id\": 2009,\n            \"key\": \"7b1f21e3075e057ea919c3a10309c5e23c88977b\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "FieldNames",
+            "description": "<p>The field that has error with the associated error</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "identifier-taken-error:",
+          "content": "HTTP/1.1 200\n{\n     \"username\": [\n         \"The username has already been taken.\"\n     ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "validation-error:",
+          "content": "HTTP/1.1 200\n{\n     \"email\": [\n         \"The email must be a valid email address.\"\n     ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/Auth/AuthController.php",
+    "groupTitle": "Authentication"
+  },
+  {
     "type": "get",
     "url": "/challenge/:challengeId/discussion",
     "title": "list of discussion for a challenge",
@@ -1271,58 +1363,6 @@
   },
   {
     "type": "get",
-    "url": "/group/:groupId/subgroup/classmap",
-    "title": "List of all classes in all subgroups",
-    "name": "GetSubGroupsAllClasses",
-    "group": "Groups",
-    "description": "<p>here subgroup id are used as object key</p> ",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "<p>String</p> ",
-            "optional": false,
-            "field": "object-key",
-            "description": "<p>group id's</p> "
-          },
-          {
-            "group": "Success 200",
-            "type": "<p>String</p> ",
-            "optional": false,
-            "field": "className",
-            "description": "<p>Name of the class</p> "
-          },
-          {
-            "group": "Success 200",
-            "type": "<p>String</p> ",
-            "optional": false,
-            "field": "shortDescription",
-            "description": "<p>Short description</p> "
-          },
-          {
-            "group": "Success 200",
-            "type": "<p>number</p> ",
-            "optional": false,
-            "field": "classId",
-            "description": "<p>Id of the class</p> "
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n    {\n      \"143\": [\n        {\n          \"classId\": 28,\n          \"className\": \"1 A : School Bank Champs Junior\",\n          \"shortDescription\": null\n        }\n      ],\n      \"144\": [\n        {\n          \"classId\": 29,\n          \"className\": \"1 B : School Bank Champs Junior\",\n          \"shortDescription\": null\n        }\n      ],\n      \"145\": [\n        {\n          \"classId\": 30,\n          \"className\": \"2 A : School Bank Champs Senior\",\n          \"shortDescription\": null\n        }\n      ],\n      \"146\": [\n        {\n          \"classId\": 31,\n          \"className\": \"3 A : School Bank Champs Senior\",\n          \"shortDescription\": null\n        }\n      ]\n    }",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "app/Http/Controllers/GroupController.php",
-    "groupTitle": "Groups"
-  },
-  {
-    "type": "get",
     "url": "/group/:groupId/subgroup/usermap",
     "title": "List of all people in all subgroups (object Type)",
     "name": "GetSubGroupsAllClasses",
@@ -1365,6 +1405,58 @@
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n    {\n        \"143\": [\n            {\n                \"userId\": 57,\n                \"userName\": \"P M Mandke\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 58,\n                \"userName\": \"Abhyudaya Admin\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 61,\n                \"userName\": \"JYOLSNA NAIR\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 63,\n                \"userName\": \"ujjwal\",\n                \"roleName\": \"Student\"\n            }\n        ],\n        \"144\": [\n            {\n                \"userId\": 57,\n                \"userName\": \"P M Mandke\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 61,\n                \"userName\": \"JYOLSNA NAIR\",\n                \"roleName\": \"Admin\"\n            }\n        ],\n        \"145\": [\n            {\n                \"userId\": 61,\n                \"userName\": \"JYOLSNA NAIR\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 62,\n                \"userName\": \"Utkarsh shukla\",\n                \"roleName\": \"Admin\"\n            }\n        ],\n        \"146\": [\n            {\n                \"userId\": 60,\n                \"userName\": \"BHAGWAT BHOSALE\",\n                \"roleName\": \"Admin\"\n            },\n            {\n                \"userId\": 61,\n                \"userName\": \"JYOLSNA NAIR\",\n                \"roleName\": \"Admin\"\n            }\n        ]\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/GroupController.php",
+    "groupTitle": "Groups"
+  },
+  {
+    "type": "get",
+    "url": "/group/:groupId/subgroup/classmap",
+    "title": "List of all classes in all subgroups",
+    "name": "GetSubGroupsAllClasses",
+    "group": "Groups",
+    "description": "<p>here subgroup id are used as object key</p> ",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "object-key",
+            "description": "<p>group id's</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "className",
+            "description": "<p>Name of the class</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "shortDescription",
+            "description": "<p>Short description</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>number</p> ",
+            "optional": false,
+            "field": "classId",
+            "description": "<p>Id of the class</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"143\": [\n        {\n          \"classId\": 28,\n          \"className\": \"1 A : School Bank Champs Junior\",\n          \"shortDescription\": null\n        }\n      ],\n      \"144\": [\n        {\n          \"classId\": 29,\n          \"className\": \"1 B : School Bank Champs Junior\",\n          \"shortDescription\": null\n        }\n      ],\n      \"145\": [\n        {\n          \"classId\": 30,\n          \"className\": \"2 A : School Bank Champs Senior\",\n          \"shortDescription\": null\n        }\n      ],\n      \"146\": [\n        {\n          \"classId\": 31,\n          \"className\": \"3 A : School Bank Champs Senior\",\n          \"shortDescription\": null\n        }\n      ]\n    }",
           "type": "json"
         }
       ]
