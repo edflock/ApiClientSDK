@@ -359,6 +359,89 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/community",
+    "title": "List of Communities",
+    "name": "GetCommunities",
+    "group": "Community",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "id",
+            "description": "<p>class id</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of the Class</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "shortDescription",
+            "description": "<p>shortDescription of the Class</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "roleName",
+            "description": "<p>role name of the user in the class</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>Url</p> ",
+            "optional": false,
+            "field": "img_url",
+            "description": "<p>image url associated with the class (can be null)</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>Number</p> ",
+            "allowedValues": [
+              "0",
+              "1"
+            ],
+            "optional": false,
+            "field": "closed",
+            "description": "<p>1 for closed class and 0 for open class</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>Url</p> ",
+            "optional": false,
+            "field": "icon_url",
+            "description": "<p>icon url associated with the class (can be null)</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "icon_text",
+            "description": "<p>Abbreviation to the class name to be used as the image in the case either the img_url or icon_url is not present</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"data\": [\n        {\n          \"communityId\": 48,\n          \"communityName\": \"Class 1\",\n          \"shortDescription\": \"class 1\",\n          \"longDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"C1\",\n          \"groupName\": \"S S HIGH SCHOOL & JUNIOR COLLEGE\",\n          \"groupId\": 666,\n          \"createdByUserId\": 0,\n          \"createdByUser\": null,\n          \"belongs_to\": \"S S HIGH SCHOOL & JUNIOR COLLEGE\",\n          \"belongs_to_type\": \"group\",\n          \"belongs_to_id\": 666\n        },\n        {\n          \"communityId\": 50,\n          \"communityName\": \"new class 2\",\n          \"shortDescription\": null,\n          \"longDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"NC\",\n          \"groupName\": null,\n          \"groupId\": null,\n          \"createdByUserId\": 308,\n          \"createdByUser\": \"School Bank Champ Admin\",\n          \"belongs_to\": \"School Bank Champ Admin\",\n          \"belongs_to_type\": \"user\",\n          \"belongs_to_id\": 308\n        }\n      ]\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/CommunityController.php",
+    "groupTitle": "Community"
+  },
+  {
+    "type": "get",
     "url": "/course/:courseId/detail",
     "title": "Detail for a course",
     "name": "GetCourseDetail",
@@ -2212,6 +2295,129 @@ define({ "api": [
         {
           "title": "Authorization-Error-Example",
           "content": "HTTP/1.1 422 Unprocessable Entity\n    {\n      \"error\": {\n        \"code\": \"GEN-FORBIDDEN\",\n        \"http_code\": 403,\n        \"message\": \"Forbidden\"\n      }\n    }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/me/community",
+    "title": "List of user community",
+    "name": "GetMyCommunityPaginatedList",
+    "group": "Me_Community",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>Number</p> ",
+            "optional": false,
+            "field": "id",
+            "description": "<p>class id</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of the Class</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "shortDescription",
+            "description": "<p>shortDescription of the Class</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "roleName",
+            "description": "<p>role name of the user in the class</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>Url</p> ",
+            "optional": false,
+            "field": "img_url",
+            "description": "<p>image url associated with the class (can be null)</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>Number</p> ",
+            "allowedValues": [
+              "0",
+              "1"
+            ],
+            "optional": false,
+            "field": "closed",
+            "description": "<p>1 for closed class and 0 for open class</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>Url</p> ",
+            "optional": false,
+            "field": "icon_url",
+            "description": "<p>icon url associated with the class (can be null)</p> "
+          },
+          {
+            "group": "Success 200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "icon_text",
+            "description": "<p>Abbreviation to the class name to be used as the image in the case either the img_url or icon_url is not present</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\n      \"data\": [\n        {\n          \"id\": 50,\n          \"name\": \"new class 2\",\n          \"shortDescription\": null,\n          \"img_url\": null,\n          \"icon_url\": null,\n          \"icon_text\": \"NC\",\n          \"closed\": 0,\n          \"roleName\": \"Student\",\n          \"groupName\": null,\n          \"groupId\": null,\n          \"courseName\": \"School Bank Champs Junior\",\n          \"createdByUserId\": 308,\n          \"createdByUser\": \"School Bank Champ Admin\",\n          \"belongs_to\": \"School Bank Champ Admin\",\n          \"belongs_to_type\": \"user\",\n          \"belongs_to_id\": 308\n        }\n      ]\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserCommunityController.php",
+    "groupTitle": "Me_Community",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
           "type": "json"
         }
       ]
