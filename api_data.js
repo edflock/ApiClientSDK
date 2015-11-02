@@ -832,6 +832,123 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "me/class/:classId/forum/categories",
+    "title": "List of the forum categories in the Class",
+    "name": "GetForumForClass",
+    "group": "Forum",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n[\n  {\n    \"forumCategoryId\": \"1\",\n    \"forumCategoryTitle\": \"Category\",\n    \"forumCategorySubTitle\": \"Contains categories and threads\",\n    \"forumCategoryCreatedAt\": \"2015-11-01 19:17:23\",\n    \"forumCategoryUpdatedAt\": \"2015-11-01 19:17:23\"\n  },\n  {\n    \"forumCategoryId\": \"2\",\n    \"forumCategoryTitle\": \"Sub-category\",\n    \"forumCategorySubTitle\": \"Contains threads\",\n    \"forumCategoryCreatedAt\": \"2015-11-01 19:17:31\",\n    \"forumCategoryUpdatedAt\": \"2015-11-01 19:17:31\"\n  }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserClassController.php",
+    "groupTitle": "Forum",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/community/:communityId/forum/categories",
+    "title": "List of the forum categories in the Community",
+    "name": "GetForumForCommunity",
+    "group": "Forum",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    [\n      {\n        \"forumCategoryId\": \"1\",\n        \"forumCategoryTitle\": \"Category\",\n        \"forumCategorySubTitle\": \"Contains categories and threads\",\n        \"forumCategoryCreatedAt\": \"2015-11-01 19:17:23\",\n        \"forumCategoryUpdatedAt\": \"2015-11-01 19:17:23\"\n      },\n      {\n        \"forumCategoryId\": \"2\",\n        \"forumCategoryTitle\": \"Sub-category\",\n        \"forumCategorySubTitle\": \"Contains threads\",\n        \"forumCategoryCreatedAt\": \"2015-11-01 19:17:31\",\n        \"forumCategoryUpdatedAt\": \"2015-11-01 19:17:31\"\n      }\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error200": [
+          {
+            "group": "Error200",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "NotCommunity",
+            "description": "<p>The Id is not a community.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "NotCommunity-Example",
+          "content": "HTTP/1.1 200\n{\n  \"error\": \"Not a Community\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/CommunityController.php",
+    "groupTitle": "Forum"
+  },
+  {
+    "type": "get",
+    "url": "/group/:groupId/forum/categories",
+    "title": "List of the forum categories in the group",
+    "name": "GetForumForGroup",
+    "group": "Forum",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    [\n      {\n        \"forumCategoryId\": \"1\",\n        \"forumCategoryTitle\": \"Category\",\n        \"forumCategorySubTitle\": \"Contains categories and threads\",\n        \"forumCategoryCreatedAt\": \"2015-11-01 19:17:23\",\n        \"forumCategoryUpdatedAt\": \"2015-11-01 19:17:23\"\n      },\n      {\n        \"forumCategoryId\": \"2\",\n        \"forumCategoryTitle\": \"Sub-category\",\n        \"forumCategorySubTitle\": \"Contains threads\",\n        \"forumCategoryCreatedAt\": \"2015-11-01 19:17:31\",\n        \"forumCategoryUpdatedAt\": \"2015-11-01 19:17:31\"\n      }\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/GroupController.php",
+    "groupTitle": "Forum"
+  },
+  {
+    "type": "get",
     "url": "/group/:groupId/class",
     "title": "Class list in the group",
     "name": "GetGroupClasses",
