@@ -949,6 +949,44 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/forum/thread/{threadId}/posts",
+    "title": "List Posts in the forum threads",
+    "name": "getPostsInThreads",
+    "group": "Forum",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n\n    [\n      {\n        \"postId\": 3,\n        \"postContent\": \"This is a test comment\",\n        \"postLikesCount\": 2,\n        \"authorId\": null,\n        \"authorName\": null,\n        \"createdAt\": \"2015-09-04 19:52:10\",\n        \"updatedAt\": \"2015-09-04 19:52:10\"\n      },\n      {\n        \"postId\": 4,\n        \"postContent\": \"This is a test comment\",\n        \"postLikesCount\": 1,\n        \"authorId\": null,\n        \"authorName\": null,\n        \"createdAt\": \"2015-09-04 20:21:13\",\n        \"updatedAt\": \"2015-09-04 20:21:13\"\n      },\n      {\n        \"postId\": 5,\n        \"postContent\": \"This ischecked\",\n        \"postLikesCount\": 0,\n        \"authorId\": null,\n        \"authorName\": null,\n        \"createdAt\": \"2015-09-04 20:21:27\",\n        \"updatedAt\": \"2015-09-04 20:21:27\"\n      },\n      {\n        \"postId\": 6,\n        \"postContent\": \"Hello\",\n        \"postLikesCount\": 0,\n        \"authorId\": null,\n        \"authorName\": null,\n        \"createdAt\": \"2015-09-04 20:29:49\",\n        \"updatedAt\": \"2015-09-04 20:29:49\"\n      },\n      {\n        \"postId\": 7,\n        \"postContent\": \"Hello\",\n        \"postLikesCount\": 0,\n        \"authorId\": null,\n        \"authorName\": null,\n        \"createdAt\": \"2015-09-04 20:30:16\",\n        \"updatedAt\": \"2015-09-04 20:30:16\"\n      }\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/ForumController.php",
+    "groupTitle": "Forum"
+  },
+  {
+    "type": "get",
+    "url": "/forum/category/{categoryId}/threads",
+    "title": "List threads in the forum category",
+    "name": "getThreadsInCategory",
+    "group": "Forum",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n\n    [\n      {\n        \"threadId\": 2,\n        \"threadTitle\": \"how to start\",\n        \"forumViewCount\": 40,\n        \"authorId\": null,\n        \"authorName\": null,\n        \"createdAt\": \"2015-09-04 18:44:42\",\n        \"updatedAt\": \"2015-09-04 20:30:16\"\n      },\n      {\n        \"threadId\": 1,\n        \"threadTitle\": \"how to start\",\n        \"forumViewCount\": 7,\n        \"authorId\": null,\n        \"authorName\": null,\n        \"createdAt\": \"2015-09-04 18:42:02\",\n        \"updatedAt\": \"2015-09-04 18:42:02\"\n      }\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/ForumController.php",
+    "groupTitle": "Forum"
+  },
+  {
+    "type": "get",
     "url": "/group/:groupId/class",
     "title": "Class list in the group",
     "name": "GetGroupClasses",
@@ -2849,6 +2887,446 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "app/Http/Controllers/UserCourseController.php",
     "groupTitle": "Me_Courses",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "POST",
+    "url": "/me/forum/post/{postId}/like",
+    "title": "Like a post",
+    "name": "LikePostInForum",
+    "group": "Me_Forum",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n    {\"success\":true}\n    {\"success\":true,\"message\":\"User already liked the post\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserForumController.php",
+    "groupTitle": "Me_Forum",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "POST",
+    "url": "/me/forum/thread/{threadId}/post",
+    "title": "add a post in athread",
+    "name": "add_post_in_a_thread",
+    "group": "Me_Forum",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "content",
+            "description": "<p>[required].</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserForumController.php",
+    "groupTitle": "Me_Forum",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "POST",
+    "url": "/me/forum/category/{categoryId}/thread",
+    "title": "add a thread in a category",
+    "name": "add_thread_in_category",
+    "group": "Me_Forum",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "title",
+            "description": "<p>[required].</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserForumController.php",
+    "groupTitle": "Me_Forum",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/me/class/{classId}/forum/categories",
+    "title": "Create a new category in class",
+    "name": "createClassForumCategory",
+    "group": "Me_Forum",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "title",
+            "description": "<p>[required].</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "subtitle",
+            "description": "<p>subtitle.</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserClassController.php",
+    "groupTitle": "Me_Forum",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/me/community/{communityId}/forum/categories",
+    "title": "Create a new category in community",
+    "name": "createCommunityForumCategory",
+    "group": "Me_Forum",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "title",
+            "description": "<p>[required].</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "subtitle",
+            "description": "<p>subtitle.</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserCommunityController.php",
+    "groupTitle": "Me_Forum",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "x-Authorization",
+            "description": "<p>send the api key present in the client</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Example",
+          "content": "{\n    \"x-Authorization\": \"f553d226d1fcddba52d2c531ae99df2fb171ebde\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 401": [
+          {
+            "group": "Error401",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "GEN-UNAUTHORIZED",
+            "description": "<p>The <code>user</code> is not logged in or the Authorization key is not passed in the headers.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Authorization-Error-Example",
+          "content": "HTTP/1.1 401 Unauthorized\n {\n      \"error\": {\n        \"code\": \"GEN-UNAUTHORIZED\",\n        \"http_code\": 401,\n        \"message\": \"Unauthorized\"\n      }\n }",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "POST",
+    "url": "/me/group/{groupId}/forum/categories",
+    "title": "Create a new category in group",
+    "name": "createGroupForumCategory",
+    "group": "Me_Forum",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "title",
+            "description": "<p>[required].</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>String</p> ",
+            "optional": false,
+            "field": "subtitle",
+            "description": "<p>subtitle.</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/UserGroupController.php",
+    "groupTitle": "Me_Forum",
     "header": {
       "fields": {
         "Header": [
